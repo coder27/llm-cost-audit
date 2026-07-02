@@ -1,0 +1,82 @@
+# llm-cost-audit model pricing table
+#
+# Prices are USD per 1,000,000 tokens (MTok), split into input / output.
+# `tier` is one of: frontier | mid | small.
+# `cheaper_alternative` names the model the over_modeling analyzer will suggest
+# as a downgrade (must itself be a key in this file, or null for none).
+#
+# These figures are maintained by hand and WILL drift. PRs that correct or
+# extend them are very welcome -- update `pricing_as_of` in the same change.
+pricing_as_of: "2026-07-01"
+
+models:
+  # ---- Anthropic ---------------------------------------------------------
+  claude-fable-5:
+    input_per_mtok: 10.00
+    output_per_mtok: 50.00
+    tier: frontier
+    cheaper_alternative: claude-opus-4-8
+  claude-opus-4-8:
+    input_per_mtok: 5.00
+    output_per_mtok: 25.00
+    tier: frontier
+    cheaper_alternative: claude-sonnet-5
+  claude-opus-4-7:
+    input_per_mtok: 5.00
+    output_per_mtok: 25.00
+    tier: frontier
+    cheaper_alternative: claude-sonnet-5
+  claude-opus-4-6:
+    input_per_mtok: 5.00
+    output_per_mtok: 25.00
+    tier: frontier
+    cheaper_alternative: claude-haiku-4-5
+  claude-sonnet-5:
+    input_per_mtok: 3.00
+    output_per_mtok: 15.00
+    tier: mid
+    cheaper_alternative: claude-haiku-4-5
+  claude-sonnet-4-6:
+    input_per_mtok: 3.00
+    output_per_mtok: 15.00
+    tier: mid
+    cheaper_alternative: claude-haiku-4-5
+  claude-haiku-4-5:
+    input_per_mtok: 1.00
+    output_per_mtok: 5.00
+    tier: small
+    cheaper_alternative: null
+
+  # ---- OpenAI ------------------------------------------------------------
+  gpt-4o:
+    input_per_mtok: 2.50
+    output_per_mtok: 10.00
+    tier: frontier
+    cheaper_alternative: gpt-4o-mini
+  gpt-4o-mini:
+    input_per_mtok: 0.15
+    output_per_mtok: 0.60
+    tier: small
+    cheaper_alternative: null
+  gpt-4.1:
+    input_per_mtok: 2.00
+    output_per_mtok: 8.00
+    tier: frontier
+    cheaper_alternative: gpt-4.1-mini
+  gpt-4.1-mini:
+    input_per_mtok: 0.40
+    output_per_mtok: 1.60
+    tier: small
+    cheaper_alternative: null
+
+  # ---- Google ------------------------------------------------------------
+  gemini-2.5-pro:
+    input_per_mtok: 1.25
+    output_per_mtok: 10.00
+    tier: frontier
+    cheaper_alternative: gemini-2.5-flash
+  gemini-2.5-flash:
+    input_per_mtok: 0.30
+    output_per_mtok: 2.50
+    tier: small
+    cheaper_alternative: null

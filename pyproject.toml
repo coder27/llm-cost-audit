@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-cost-audit"
+version = "0.1.0"
+description = "One-shot auditor for LLM usage logs: reads a file, finds waste, prints a ranked report, exits."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "llm-cost-audit contributors" }]
+keywords = ["llm", "cost", "audit", "openai", "anthropic", "finops"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "pandas>=2.0",
+    "typer>=0.12",
+    "rich>=13.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+llm-cost-audit = "llm_cost_audit.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/your-org/llm-cost-audit"
+Issues = "https://github.com/your-org/llm-cost-audit/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llm_cost_audit"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+    "E501",  # long lines in report/HTML strings are intentional
+    "B008",  # typer.Option() in defaults is the idiomatic Typer pattern
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
