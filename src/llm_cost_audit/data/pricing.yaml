@@ -7,10 +7,15 @@
 #
 # These figures are maintained by hand and WILL drift. PRs that correct or
 # extend them are very welcome -- update `pricing_as_of` in the same change.
-pricing_as_of: "2026-07-01"
+pricing_as_of: "2026-08-17"
 
 models:
   # ---- Anthropic ---------------------------------------------------------
+  claude-opus-5:
+    input_per_mtok: 5.00
+    output_per_mtok: 25.00
+    tier: frontier
+    cheaper_alternative: claude-sonnet-5
   claude-fable-5:
     input_per_mtok: 10.00
     output_per_mtok: 50.00
@@ -69,7 +74,40 @@ models:
     tier: small
     cheaper_alternative: null
 
+  # GPT-5.6 family, GA 2026-07-09. Terra -20% and Luna -80% on 2026-07-30.
+  gpt-5.6-sol:
+    input_per_mtok: 5.00
+    output_per_mtok: 30.00
+    tier: frontier
+    cheaper_alternative: gpt-5.6-terra
+  gpt-5.6-terra:
+    input_per_mtok: 2.00
+    output_per_mtok: 12.00
+    tier: mid
+    cheaper_alternative: gpt-5.6-luna
+  gpt-5.6-luna:
+    input_per_mtok: 0.20
+    output_per_mtok: 1.20
+    tier: small
+    cheaper_alternative: null
+
   # ---- Google ------------------------------------------------------------
+  # Pro rates step up above 200K context (input 2x / output 1.5x) -- not modelled.
+  gemini-3.1-pro:
+    input_per_mtok: 2.00
+    output_per_mtok: 12.00
+    tier: frontier
+    cheaper_alternative: gemini-3.7-flash
+  gemini-3.7-flash:
+    input_per_mtok: 1.50
+    output_per_mtok: 7.50
+    tier: mid
+    cheaper_alternative: gemini-3.1-flash-lite
+  gemini-3.1-flash-lite:
+    input_per_mtok: 0.25
+    output_per_mtok: 1.50
+    tier: small
+    cheaper_alternative: null
   gemini-2.5-pro:
     input_per_mtok: 1.25
     output_per_mtok: 10.00
