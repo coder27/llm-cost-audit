@@ -12,7 +12,7 @@ from llm_cost_audit.pricing import Pricing, compute_costs
 
 
 def test_pricing_loads_expected_models(pricing):
-    assert pricing.pricing_as_of == "2026-07-01"
+    assert pricing.pricing_as_of == "2026-08-17"
     opus = pricing.get("claude-opus-4-6")
     assert opus is not None
     assert opus.tier == "frontier"

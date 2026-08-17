@@ -130,6 +130,14 @@ in the same change. Unknown models are warned about once, excluded from savings
 estimates, and still counted in spend totals when a `cost_usd` column was
 provided.
 
+## Related
+
+[**agentic-cost-calculator**](https://github.com/coder27/agentic-cost-calculator) — the other
+half of the problem. This tool attributes spend you've *already incurred*; the calculator
+models a multi-step workflow *before* you build it, including the context accumulation, retries
+and cache behaviour that make an agent cost more than the sum of its calls. It shares this
+table's `*_per_mtok` convention, so the two stay reconcilable.
+
 ## JSON output schema
 
 `--json` emits a stable, documented shape for CI use (`schema_version: "0.1"`):
